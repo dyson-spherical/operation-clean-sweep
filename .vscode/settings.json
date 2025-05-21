@@ -1,3 +1,52 @@
 {
-    "java.compile.nullAnalysis.mode": "automatic"
+  // General settings
+  "editor.formatOnSave": true,
+  "files.autoSave": "onFocusChange",
+  "files.trimTrailingWhitespace": true,
+
+  // TypeScript/JavaScript settings (applied to frontend)
+  "[typescript][javascript][vue]": {
+    "editor.defaultFormatter": "Vue.volar",
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "typescript.format.semicolons": "insert",
+  "javascript.format.semicolons": "insert",
+  "typescript.preferences.quoteStyle": "single",
+  "javascript.preferences.quoteStyle": "single",
+  "prettier.requireConfig": true,
+
+  // Java settings (applied to backend)
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java",
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "java.format.settings.url": ".vscode/java-formatter.xml",
+  "java.format.settings.profile": "SpringStyle",
+
+  // Project-specific file associations
+  "files.associations": {
+    "*.vue": "vue"
+  },
+
+  // Exclude node_modules and target directories from search
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/target": true
+  },
+
+  // Exclude directories from file watching
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/target/**": true
+  },
+  "java.compile.nullAnalysis.mode": "automatic"
 }
