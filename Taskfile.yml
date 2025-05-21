@@ -22,6 +22,12 @@ tasks:
       - task: backend:default
       - task: frontend:default
 
+  start:
+    desc: start backing services
+    cmds:
+      - docker-compose up -d
+      - task: start-all
+
   start-all:
     desc: start all apps
     deps: [backend:start, frontend:start]

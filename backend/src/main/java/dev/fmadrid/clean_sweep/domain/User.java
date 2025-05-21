@@ -7,40 +7,46 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "chores")
-public class Chore {
+@Document(collection = "users")
+public class User {
     @Id
     private String id;
 
+    @Indexed(unique = true)
+    private String username;
+
     private String name;
 
-    private String description;
+    @Indexed(unique = true)
+    private String email;
 
-    private ChoreType type;
+    private String passwordHash;
 
-    private BigDecimal value;
+    private Set<Role> roles;
 
-    private Integer estimatedDuration;
+    private Set<ChoreType> verifiableTasks;
 
-    private DifficultyLevel difficulty;
+    private BigDecimal balance;
 
-    private List<String> checklist;
+    private Integer completedChores;
 
-    private Schedule schedule;
+    private Integer streakCount;
 
-    private boolean isFlexible;
+    private List<Achievement> achievements;
 
-    private String createdById;
+    private UserPreferences preferences;
 
     @CreatedDate
     private LocalDateTime createdAt;

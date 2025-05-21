@@ -9,38 +9,29 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "chores")
-public class Chore {
+@Document(collection = "weeks")
+public class Week {
     @Id
     private String id;
 
-    private String name;
+    private LocalDate startDate;
 
-    private String description;
+    private LocalDate endDate;
 
-    private ChoreType type;
+    private String goal;
 
-    private BigDecimal value;
+    private boolean goalAchieved;
 
-    private Integer estimatedDuration;
+    private Integer totalChoresAssigned;
 
-    private DifficultyLevel difficulty;
-
-    private List<String> checklist;
-
-    private Schedule schedule;
-
-    private boolean isFlexible;
-
-    private String createdById;
+    private Integer totalChoresCompleted;
 
     @CreatedDate
     private LocalDateTime createdAt;
