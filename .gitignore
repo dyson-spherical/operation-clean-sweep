@@ -30,3 +30,6 @@ dist-ssr
 backend/build
 backend/gradle
 backend/.gradle
+
+# secrets
+.env

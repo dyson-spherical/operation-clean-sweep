@@ -5,6 +5,8 @@ version: '3'
 vars:
   GREETING: Hello, World!
 
+dotenv: ['.env', '{{.ENV}}/.env', '{{.HOME}}/.env']
+
 includes:
   backend: 
     taskfile: ./backend/Taskfile-backend.yaml

@@ -1,0 +1,13 @@
+services:
+  mongodb:
+    image: mongo
+    env_file:
+      - .env
+    volumes:
+      - mongodb:/data/db
+    platform: linux/arm64/v8
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodb:
