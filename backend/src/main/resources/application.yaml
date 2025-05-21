@@ -1,3 +1,6 @@
+server:
+  servlet:
+    context-path: /api
 spring:
   application:
     name: Operation Clean Sweep
@@ -7,3 +10,13 @@ spring:
       password: ${MONGO_PASSWORD}
       database: ${MONGO_DATABASE:test}
       authentication-database: admin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+            issuer-uri: https://sso.upliftlunar.rocks/application/o/tasktide/
+            authorization-uri: https://sso.upliftlunar.rocks/application/o/authorize/
+            token-uri: https://sso.upliftlunar.rocks/application/o/token/
+            jwk-set-uri: https://sso.upliftlunar.rocks/application/o/tasktide/jwks/
+            user-info-uri: https://sso.upliftlunar.rocks/application/o/userinfo/
+            user-name-attribute: email
