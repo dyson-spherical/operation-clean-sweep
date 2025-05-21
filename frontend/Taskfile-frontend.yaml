@@ -1,0 +1,33 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    desc: install and build
+    cmds:
+      - task: install
+      - task: build
+  install:
+    desc: install npm dependencies
+    cmds:
+      - npm install
+    sources:
+      - package-lock.json
+      - package.json
+  build:
+    desc: run the vite build
+    cmds:
+      - npm run build
+    sources:
+      - src/**/*.vue
+      - src/**/*.css
+      - src/**/*.ts
+    generates:
+      - dist/*.html
+      - dist/**/*.css
+      - dist/**/*.js
+  start:
+    desc: "start the vite dev server"
+    cmds:
+      - npm run dev

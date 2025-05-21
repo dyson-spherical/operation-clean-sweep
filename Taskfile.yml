@@ -1,0 +1,25 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+includes:
+  backend: 
+    taskfile: ./backend/Taskfile-backend.yaml
+    dir: ./backend
+  frontend: 
+    taskfile: ./frontend/Taskfile-frontend.yaml
+    dir: ./frontend
+
+tasks:
+  build:
+    desc: build all apps
+    cmds:
+      - task: backend:default
+      - task: frontend:default
+
+  start-all:
+    desc: start all apps
+    deps: [backend:start, frontend:start]
