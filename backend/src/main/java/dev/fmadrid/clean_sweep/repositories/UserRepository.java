@@ -13,6 +13,10 @@ import dev.fmadrid.clean_sweep.domain.User;
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByUsername(String username);
+
     List<User> findByRolesContaining(Role role);
+
     List<User> findByVerifiableTasksContaining(ChoreType type);
+
+    Optional<User> findByEmail(String email);
 }

@@ -53,4 +53,19 @@ public class User {
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
+    private LocalDateTime lastLoginAt;
+
+    private LocalDateTime lastAchievementCheck;
+
+    @Data
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class UserStats {
+        private int completedChores = 0;
+        private int streakCount = 0;
+        private int balance = 0;
+        private List<String> achievements = List.of();
+    }
 }

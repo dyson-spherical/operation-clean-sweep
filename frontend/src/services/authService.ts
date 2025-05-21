@@ -1,4 +1,5 @@
 // src/services/authService.ts
+import { userService } from '@/services/userService';
 import type { User } from '@/types';
 import { Role } from '@/types';
 import { User as OidcUser, UserManager, WebStorageStateStore } from 'oidc-client-ts';
@@ -43,7 +44,7 @@ class AuthService {
         try {
             const oidcUser = await this.userManager.getUser();
             if (oidcUser && !oidcUser.expired) {
-                this.processOidcUser(oidcUser);
+                await this.processOidcUser(oidcUser);
             }
         } catch (error) {
             console.error('Failed to load user from storage:', error);
@@ -68,35 +69,19 @@ class AuthService {
         });
     }
 
-    private processOidcUser(oidcUser: OidcUser): void {
-        // Map OIDC user to your application's user model
-        // Assuming Authentik provides roles in a claim like 'roles' or 'groups'
-        const roles = this.extractRoles(oidcUser);
+    private async processOidcUser(oidcUser: OidcUser): Promise<void> {
+        try {
+            // Get or create user from backend
+            const user = await userService.getCurrentUser();
+            this.currentUser = user;
 
-        this.currentUser = {
-            id: oidcUser.profile.sub,
-            username: oidcUser.profile.preferred_username || oidcUser.profile.email,
-            name: oidcUser.profile.name || '',
-            email: oidcUser.profile.email || '',
-            roles: roles,
-            verifiableTasks: [], // This would need to come from your backend or a specific claim
-            balance: 0, // This would need to come from your backend
-            completedChores: 0, // This would need to come from your backend
-            streakCount: 0, // This would need to come from your backend
-            achievements: [], // This would need to come from your backend
-            preferences: {
-                notifications: true,
-                theme: 'light',
-                emailReminders: true,
-                celebrationAnimations: true
-            },
-            createdAt: '',
-            updatedAt: ''
-        };
-
-        // Store the token for API calls
-        localStorage.setItem('auth_token', oidcUser.access_token);
-        localStorage.setItem('current_user', JSON.stringify(this.currentUser));
+            // Store the token for API calls
+            localStorage.setItem('auth_token', oidcUser.access_token);
+            localStorage.setItem('current_user', JSON.stringify(this.currentUser));
+        } catch (error) {
+            console.error('Failed to process user:', error);
+            throw error;
+        }
     }
 
     private extractRoles(oidcUser: OidcUser): Role[] {
@@ -126,7 +111,7 @@ class AuthService {
     public async handleCallback(): Promise<User | null> {
         try {
             const oidcUser = await this.userManager.signinRedirectCallback();
-            this.processOidcUser(oidcUser);
+            await this.processOidcUser(oidcUser);
             return this.currentUser;
         } catch (error) {
             console.error('Error handling callback:', error);

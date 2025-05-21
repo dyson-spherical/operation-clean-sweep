@@ -36,6 +36,8 @@ onMounted(async () => {
   // Update the store with the current user from authService
   const currentUser = authService.getCurrentUser();
 
+  console.log(currentUser);
+
   if (currentUser) {
     authStore.setUser(currentUser);
 

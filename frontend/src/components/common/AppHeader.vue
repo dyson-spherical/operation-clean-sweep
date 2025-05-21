@@ -5,7 +5,7 @@
         <div class="flex-shrink-0">
           <router-link to="/"
             class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300">
-            <h1 class="text-xl font-bold">Family Chores</h1>
+            <h1 class="text-xl font-bold">TaskTide</h1>
           </router-link>
         </div>
 
