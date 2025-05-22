@@ -1,17 +1,27 @@
 // User related types
 export enum Role {
-  ADMINISTRATOR = 'ADMINISTRATOR',
+  ADMIN = 'ADMIN',
   WORKER = 'WORKER',
   VERIFIER = 'VERIFIER'
 }
 
-export enum Achievement {
-  FIRST_CHORE = 'FIRST_CHORE',
-  PERFECT_WEEK = 'PERFECT_WEEK',
-  STREAK_MASTER = 'STREAK_MASTER',
-  HELPING_HAND = 'HELPING_HAND',
-  EARLY_BIRD = 'EARLY_BIRD',
-  CHORE_CHAMPION = 'CHORE_CHAMPION'
+export interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  type: AchievementType;
+  requiredProgress: number;
+  unlockedAt: string;
+  userId: string;
+}
+
+export enum AchievementType {
+  CHORES_COMPLETED = 'CHORES_COMPLETED',
+  STREAK_MILESTONE = 'STREAK_MILESTONE',
+  VERIFICATION_MILESTONE = 'VERIFICATION_MILESTONE',
+  BALANCE_MILESTONE = 'BALANCE_MILESTONE',
+  SPECIAL_EVENT = 'SPECIAL_EVENT'
 }
 
 export interface UserPreferences {

@@ -18,4 +18,4 @@ tasks:
   start:
     desc: run bootRun
     cmds:
-      - ./gradlew bootRun
+      - ./gradlew bootRun --args='--spring-boot.run.profiles=dev'

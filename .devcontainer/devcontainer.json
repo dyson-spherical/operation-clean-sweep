@@ -20,8 +20,23 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"Vue.volar",
-				"task.vscode-task"
+				// "Vue.volar",
+				"task.vscode-task",
+				"mongodb.mongodb-vscode",
+				// TypeScript/Vue extensions
+				"vue.vscode-typescript-vue-plugin",
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+
+				// Java extensions
+				"vscjava.vscode-java-pack",
+				"vmware.vscode-spring-boot",
+				"redhat.vscode-xml",
+
+				// General extensions
+				"eamodio.gitlens",
+				"streetsidesoftware.code-spell-checker",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}

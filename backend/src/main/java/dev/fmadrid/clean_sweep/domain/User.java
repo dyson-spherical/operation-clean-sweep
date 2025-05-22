@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -59,13 +60,17 @@ public class User {
     private LocalDateTime lastAchievementCheck;
 
     @Data
-    @Builder
+    @SuperBuilder
     @NoArgsConstructor
     @AllArgsConstructor
     public static class UserStats {
+        @Builder.Default
         private int completedChores = 0;
+        @Builder.Default
         private int streakCount = 0;
+        @Builder.Default
         private int balance = 0;
+        @Builder.Default
         private List<String> achievements = List.of();
     }
 }

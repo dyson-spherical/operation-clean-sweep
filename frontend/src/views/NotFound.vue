@@ -1,49 +1,15 @@
 <template>
-  <div class="not-found">
-    <div class="not-found-content">
-      <h1>404</h1>
-      <h2>Page Not Found</h2>
-      <p>The page you are looking for doesn't exist or has been moved.</p>
-      <router-link to="/" class="btn-primary">Go Home</router-link>
+  <div class="min-h-[80vh] flex items-center justify-center px-4">
+    <div class="max-w-md w-full text-center">
+      <h1 class="text-8xl font-bold text-indigo-600 dark:text-indigo-400 mb-4">404</h1>
+      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100 mb-4">Page Not Found</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">
+        The page you are looking for doesn't exist or has been moved.
+      </p>
+      <router-link to="/"
+        class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors duration-200">
+        Go Home
+      </router-link>
     </div>
   </div>
 </template>
-
-<style scoped>
-.not-found {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 80vh;
-  text-align: center;
-}
-
-.not-found-content {
-  max-width: 500px;
-  padding: 2rem;
-}
-
-h1 {
-  font-size: 6rem;
-  color: var(--primary-color);
-  margin: 0;
-  line-height: 1;
-}
-
-h2 {
-  font-size: 2rem;
-  margin: 1rem 0;
-  color: var(--text-color);
-}
-
-p {
-  margin-bottom: 2rem;
-  color: var(--text-color);
-  opacity: 0.8;
-}
-
-.btn-primary {
-  display: inline-block;
-  text-decoration: none;
-}
-</style>

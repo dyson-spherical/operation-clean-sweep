@@ -20,3 +20,8 @@ spring:
             jwk-set-uri: https://sso.upliftlunar.rocks/application/o/tasktide/jwks/
             user-info-uri: https://sso.upliftlunar.rocks/application/o/userinfo/
             user-name-attribute: email
+
+logging:
+  level:
+    dev.fmadrid.clean_sweep: DEBUG
+    org.springframework.security: DEBUG

@@ -67,6 +67,13 @@ const isAdmin = computed(() => authStore.isAdmin);
 const isWorker = computed(() => authStore.isWorker);
 const isVerifier = computed(() => authStore.isVerifier);
 
+// Add debugging information
+console.log('User:', authStore.user);
+console.log('Roles:', authStore.user?.roles);
+console.log('isAdmin:', isAdmin.value);
+console.log('isWorker:', isWorker.value);
+console.log('isVerifier:', isVerifier.value);
+
 onMounted(async () => {
   // await fetchCurrentWeek();
 });
